@@ -29,6 +29,11 @@
     color: #64748b;
     margin-bottom: 1rem;
   }
+
+  .hero__button {
+    border-radius: 2rem;
+    padding: 2px;
+  }
   
   .hero__button {
     padding: 0.8rem 2rem;

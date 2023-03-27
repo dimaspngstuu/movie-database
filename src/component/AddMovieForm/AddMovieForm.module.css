@@ -1,0 +1,76 @@
+/* Small Screen */
+
+.container {
+    margin: 1 rem;
+}
+
+.AddMovieForm {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+.AddMovieForm__img {
+    border-radius:25px ;
+    text-align: center;
+
+}
+
+.AddMovieForm__right {
+    width: fit-content;
+    margin: 5rem auto;
+    
+}
+
+.AddMovieForm__right__title {
+    color: burlywood;
+    font-size: 2.4rem;
+    padding-bottom: 1rem;
+}
+
+.AddMovieForm__container__form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.AddMovieForm__label {
+    margin-bottom: 0.5rem;
+}
+
+.AddMovieForm__button {
+    margin-top: 1rem;
+}
+
+
+
+/* Medium Screen */
+@media (min-width: 768px) {
+    .AddMovieForm {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .AddMovieForm__right__title {
+        text-align: start;
+    }
+
+    .AddMovieForm__container__form {
+        width: min-content;
+    }
+
+    .AddMovieForm__right {
+        flex-grow: 1;
+    }
+
+    .AddMovieForm__left {
+        flex-grow: 2;
+    }
+  }
+  
+ 
+

@@ -11,9 +11,9 @@ const Hero = () => {
                 <p className={styles.hero__description}>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, eius!
                 </p>
-                <button>Watch</button>
+                <button className={styles.hero__button}>Watch</button>
             </div>
-            <div className="hero__right">
+            <div className={styles.hero__right}>
             <img
                 className={styles.hero__image}
                 src="https://picsum.photos/536/354"
