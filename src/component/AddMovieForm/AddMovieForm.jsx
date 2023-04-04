@@ -12,13 +12,13 @@ const AddMovieForm = () => {
             </div>
             <div className={styles.AddMovieForm__right}>
                 <h2 className={styles.AddMovieForm__right__title}>Add Movie</h2>
-                 <div className={styles.AddMovieForm__container__form}>
+                 <form className={styles.AddMovieForm__container__form}>
                     <label className={styles.AddMovieForm__label} htmlFor="title">Title</label>
                     <input className={styles.AddMovieForm__input} type="text"  name='title'/>
                     <label className={styles.AddMovieForm__label}htmlFor="year">Year</label>
                     <input classname={styles.AddMovieForm__input} type="text" name='year' />
                     <button className={styles.AddMovieForm__button}>Submit</button>
-                </div>
+                </form>
             </div>
         </section>
     </div>
