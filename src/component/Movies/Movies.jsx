@@ -1,30 +1,11 @@
 import Movie from '../Movie/Movie'
 import styles from './Movies.module.css'
-import data from '../../utility/constant/Data'
-import { useState } from "react";
-import {nanoid} from 'nanoid';
+// import data from '../../utility/constant/Data'
+// import { useState } from "react";
 
 
-
-const Movies = () => {
-  const [movies,setMovies] = useState(data);
-
-  const AddFilm = () => {
-    const movie = {
-      id: nanoid(12),
-      title: "Spirak",
-      year: "2021",
-      type: "Movie",
-      poster:"https://picsum.photos/300/400"
-    }
-    
-    setMovies([...movies,movie])
-  }
-
-  console.log(movies)
-
-
-
+const Movies = (props) => {
+  const {movies} = props;
   return (
     <div className={styles.container}>
         <section className={styles.movies}>
@@ -34,7 +15,7 @@ const Movies = () => {
                 return <Movie key={movie.id} movie={movie}/>
               })}
             </div>
-            <button onClick = {AddFilm}>Add Movie</button>
+    
         </section>
     </div>
   )
