@@ -8,6 +8,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  .navbar__item a {
+    text-decoration: none;
+  }
   
   .navbar__brand {
     font-size: 2.4rem;
@@ -18,6 +22,7 @@
     display: flex;
     flex-direction: column;
     list-style: none;
+  
   }
   
   .navbar__item {

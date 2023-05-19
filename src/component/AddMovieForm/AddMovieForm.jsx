@@ -2,64 +2,80 @@ import Alert from "../Alert/Alert";
 import styles from "./AddMovieForm.module.css";
 import { useState } from "react";
 
-
 const AddMovieForm = (props) => {
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [link,setLink] =useState("");
-  const [genre,setGenre] = useState();
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    link: "",
+    genre: "",
+  });
 
-  const [isTitleError, setTitleError] = useState(false);
-  const [isDateError, setDateError] = useState(false);
-  const [isLinkError,setIsLinkError] = useState(0);
+  const { title, date, link, genre } = formData;
+
+  // const [isTitleError, setTitleError] = useState(false);
+  // const [isDateError, setDateError] = useState(false);
+  // const [isLinkError, setIsLinkError] = useState(0);
+
+  const [isError, setIsError] = useState({
+    setTitleError: false,
+    setDateError: false,
+    setIsLinkError: false,
+  });
 
   const { movies, setMovies } = props;
 
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const handleDate = (e) => {
-    setDate(e.target.value);
+  const validate = () => {
+    if (title === "") {
+      setIsError({setTitleError: true})
+      return false;
+    } else if (date === "") {
+      setIsError({setDateError: true})
+      return false;
+    } else if (link === "") {
+      setIsError({setIsLinkError: true})
+      return false;
+    } else {
+      setIsError({setTitleError: false});
+      setIsError({setDateError: false});
+      setIsError({setIsLinkError: false})
+      return true;
+    }
   };
 
-  const handleLink =(e) => {
-    setLink(e.target.value)
-  }
+  const addMovie = () => {
+    const newMovie = {
+      id: 1234,
+      title: title,
+      year: date, 
+      type: genre,
+      poster: link,
+    };
 
-  const handleGenre = (e) => {
-    setGenre(e.target.value)
-    console.log(genre)
-  } 
+    setMovies([...movies, newMovie]);
+  };
+
+  const resetInput = () => {
+    setFormData({
+      title: "",
+      date: "",
+      link: "",
+      genre: "",
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (title === "") {
-      setTitleError(true);
-    } else if (date === "") {
-      setDateError(true);
-    } else if(link === ""){
-      setIsLinkError(1)
-    }
-     else {
-      const newMovie = {
-        id: 1234,
-        title: title,
-        year: date,
-        type: genre,
-        poster:link
-      };
-
-      setMovies([...movies, newMovie]);
-      setTitleError(false);
-      setDateError(false);
-      setIsLinkError(0);
-    }
-
-    setTitle("");
-    setDate("");
-    setLink("")
+    validate() && addMovie();
+    resetInput();
   };
 
   return (
@@ -80,45 +96,47 @@ const AddMovieForm = (props) => {
             <label className={styles.AddMovieForm__label} htmlFor="title">
               Title
             </label>
-            {isTitleError ? <Alert>Title wajib diisi</Alert> : ""}
+            {isError.setTitleError ? <Alert>Title wajib diisi</Alert> : ""}
             <input
               className={styles.AddMovieForm__input}
               type="text"
               value={title}
               id="title"
               name="title"
-              onChange={handleTitle}
+              onChange={handleChange}
             />
             <label className={styles.AddMovieForm__label} htmlFor="date">
               Date
             </label>
-            {isDateError ? <Alert>Date waib diisi</Alert> : ""}
+            {isError.setDateError ? <Alert>Date waib diisi</Alert> : ""}
             <input
               classname={styles.AddMovieForm__input}
               type="text"
               id="date"
               value={date}
-              onChange={handleDate}
+              onChange={handleChange}
               name="date"
             />
             <label className={styles.AddMovieForm__label} htmlFor="date">
               Link Image
             </label>
-            {isLinkError ? <p>harap isi link</p> : ""}
+            {isError.setIsLinkError ? <p>harap isi link</p> : ""}
             <input
               classname={styles.AddMovieForm__input}
               type="text"
               id="link"
               value={link}
-              onChange={handleLink}
+              onChange={handleChange}
               name="link"
             />
             <label className={styles.AddMovieForm__label} htmlFor="date">
               Pilih Genre
             </label>
-            <select value={genre} onChange={handleGenre}>
+            <select value={genre} name="genre" onChange={handleChange}>
               <option value="action">Action</option>
-              <option selected value="drama">Drama</option>
+              <option selected value="drama">
+                Drama
+              </option>
               <option value="horror">Horror</option>
               <option value="Comedy">Comedy</option>
             </select>
