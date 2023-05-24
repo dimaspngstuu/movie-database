@@ -35,18 +35,18 @@ const AddMovieForm = (props) => {
 
   const validate = () => {
     if (title === "") {
-      setIsError({setTitleError: true})
+      setIsError({ setTitleError: true });
       return false;
     } else if (date === "") {
-      setIsError({setDateError: true})
+      setIsError({ setDateError: true });
       return false;
     } else if (link === "") {
-      setIsError({setIsLinkError: true})
+      setIsError({ setIsLinkError: true });
       return false;
     } else {
-      setIsError({setTitleError: false});
-      setIsError({setDateError: false});
-      setIsError({setIsLinkError: false})
+      setIsError({ setTitleError: false });
+      setIsError({ setDateError: false });
+      setIsError({ setIsLinkError: false });
       return true;
     }
   };
@@ -55,7 +55,7 @@ const AddMovieForm = (props) => {
     const newMovie = {
       id: 1234,
       title: title,
-      year: date, 
+      year: date,
       type: genre,
       poster: link,
     };
