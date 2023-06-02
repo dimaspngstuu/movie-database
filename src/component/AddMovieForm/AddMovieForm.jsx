@@ -1,6 +1,8 @@
 import Alert from "../Alert/Alert";
+import Button from "../UI/Button/Button";
 import styles from "./AddMovieForm.module.css";
 import { useState } from "react";
+
 
 const AddMovieForm = (props) => {
   const [formData, setFormData] = useState({
@@ -140,7 +142,7 @@ const AddMovieForm = (props) => {
               <option value="horror">Horror</option>
               <option value="Comedy">Comedy</option>
             </select>
-            <button className={styles.AddMovieForm__button}>Submit</button>
+            <Button variant="secondary">Submit</Button>
           </form>
         </div>
       </section>

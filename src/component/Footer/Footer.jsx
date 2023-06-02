@@ -1,14 +1,15 @@
 import React from 'react'
-import styles from './Footer.module.css'
+import StyledFooter from './StyledFooter';
+
 
 const Footer = () => {
   return (
-    <div className={styles.container}>
-        <footer className={styles.footer}>
-            <h2 className={styles.footer__title}>Movie App</h2>
-            <p className={styles.footer__author}>@Dimas Pangestu</p>
+    <StyledFooter>
+       <footer className="footer">
+            <h2 className="footer__title">Movie App</h2>
+            <p className="footer__author">@Dimas Pangestu</p>
         </footer>
-    </div>
+    </StyledFooter>
   )
 }
 
