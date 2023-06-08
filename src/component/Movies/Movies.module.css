@@ -32,6 +32,10 @@
   
   /* Large Screen */
   @media (min-width: 992px) {
+    .movie__container {
+   
+      border: 1px solid red;
+    }
     .container {
       max-width: 1200px;
       margin: 3rem auto;

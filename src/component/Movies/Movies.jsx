@@ -2,12 +2,6 @@ import Movie from '../Movie/Movie'
 import styles from './Movies.module.css'
 
 
-
-
-
-
-
-
 const Movies = (props) => {
   const {movies} = props;
   return (
