@@ -19,7 +19,7 @@ const Popular = () => {
     fetchMovie()
   },[]);
 
-  console.log(movies)
+
 
 
   

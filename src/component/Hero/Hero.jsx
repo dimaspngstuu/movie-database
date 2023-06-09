@@ -7,24 +7,15 @@ import axios from "axios";
 const Hero = () => {
   const [movie, setMovie] = useState("");
   const API_KEY = process.env.REACT_APP_API_KEY;
+  const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
+  const Trailer = movie && `https://www.youtube.com/watch?v=${movie.videos.results[0].key}`;
 
-  // async function getMovie() {
-  //   const url = "https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590";
-  //   const res = await fetch(url);
-  //   const data = await res.json();
-  //   setMovie(data);
-  // }
-  // console.log(movie); 
-
-  // useEffect(() => {
-  //   getMovie();
-  // }, []);
+  
 
   async function getTrendMovie() {
     const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
     const response = await axios(URL);
     return response.data.results[1];
-
   }
 
   async function getDetailMovie() {
@@ -36,29 +27,34 @@ const Hero = () => {
     setMovie(response.data);
   }
 
-  console.log(movie)
-
-  
-
-
   useEffect(() => {
     getDetailMovie();
   }, []);
 
+ 
   return (
     <StyledHero>
       <section className="hero">
         <div className="hero__left">
-          <h2 className="hero__title">{movie.title}</h2>
-          <h3>What a genre?</h3>
+          <h3 className="hero__title">{movie.title}</h3>
+          <h3>Genre : {genres}</h3>
+          <br />
           <p className="hero__genre">{movie.overview}</p>
           <p className="hero__description">{movie.Plot}</p>
-          <Button variant="danger" size="sm">
+          <Button
+            as="a"
+            href={Trailer}
+            target="_blank"
+          >
             Watch
           </Button>
         </div>
         <div className="hero__right">
-          <img className="hero__image" src={movie.poster_path} alt="placeholder" />
+          <img
+            className="hero__image"
+            src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+            alt="placeholder"
+          />
         </div>
       </section>
     </StyledHero>
