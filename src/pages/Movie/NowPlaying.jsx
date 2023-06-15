@@ -26,7 +26,7 @@ const NowPlaying = () => {
   return (
     <>
       <Hero />
-      <Movies movies={movie}/>
+      <Movies movies={movie} title='Now Playing'/>
     </>
   
   )

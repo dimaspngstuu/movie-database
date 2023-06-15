@@ -8,6 +8,7 @@ import Layout from "./Layout";
 import { ThemeProvider } from "styled-components";
 import theme from "./utility/constant/theme";
 import GlobalStyle from "./component/GlobalStyle";
+import Details from "./pages/Movie/Details";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/movie/popular" element={<Popular/>}/>
         <Route path="/movie/now" element={<NowPlaying/>}/>
         <Route path="/movie/top" element={<TopRated/>}/>
+        <Route path="/movie/:id" element={<Details/>}/>
       </Routes>
     </Layout>
     </ThemeProvider>
