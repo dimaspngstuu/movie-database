@@ -18,7 +18,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <Layout>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/movie/create" element={<Create/>}/>
         <Route path="/movie/popular" element={<Popular/>}/>
         <Route path="/movie/now" element={<NowPlaying/>}/>

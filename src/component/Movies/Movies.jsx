@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import Movie from '../Movie/Movie'
 import styles from './Movies.module.css'
 
 
 const Movies = (props) => {
-  const {movies, title} = props;
+  const movies = useSelector((store) => store.movies.movies)
+
+  const {title} = props;
   return (
     <div className={styles.container}>
         <section className={styles.movies}>

@@ -4,15 +4,12 @@ import Button from "../UI/Button/Button";
 import StyledHero from "./StyledHero";
 import axios from "axios";
 
-
-
 const Hero = () => {
   const [movie, setMovie] = useState("");
   const API_KEY = process.env.REACT_APP_API_KEY;
   const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
   const Trailer =
     movie && `https://www.youtube.com/watch?v=${movie.videos.results[0].key}`;
-
 
   async function getTrendMovie() {
     const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
@@ -59,4 +56,3 @@ const Hero = () => {
 };
 
 export default Hero;
-   

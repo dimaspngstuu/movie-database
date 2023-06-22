@@ -1,16 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import Alert from "../Alert/Alert";
 import Button from "../UI/Button/Button";
 import styles from "./AddMovieForm.module.css";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addMovie } from "../../features/movieSlice";
 
 
-const AddMovieForm = (props) => {
+const AddMovieForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
     link: "",
     genre: "",
   });
+
+  const dispatch = useDispatch()
+  const navigation = useNavigate()
 
   const { title, date, link, genre } = formData;
 
@@ -24,7 +30,7 @@ const AddMovieForm = (props) => {
     setIsLinkError: false,
   });
 
-  const { movies, setMovies } = props;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +59,7 @@ const AddMovieForm = (props) => {
     }
   };
 
-  const addMovie = () => {
+  const submitMovie = () => {
     const newMovie = {
       id: 1234,
       title: title,
@@ -62,7 +68,10 @@ const AddMovieForm = (props) => {
       poster: link,
     };
 
-    setMovies([...movies, newMovie]);
+    dispatch(addMovie(newMovie))
+ 
+    navigation("/");
+   
   };
 
   const resetInput = () => {
@@ -76,7 +85,7 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validate() && addMovie();
+    validate() && submitMovie();
     resetInput();
   };
 
