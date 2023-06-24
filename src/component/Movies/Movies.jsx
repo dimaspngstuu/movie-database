@@ -1,25 +1,23 @@
-import { useSelector } from 'react-redux';
-import Movie from '../Movie/Movie'
-import styles from './Movies.module.css'
-
+import { useSelector } from "react-redux";
+import Movie from "../Movie/Movie";
+import styles from "./Movies.module.css";
 
 const Movies = (props) => {
-  const movies = useSelector((store) => store.movies.movies)
+  const movies = useSelector((store) => store.movies.movies);
 
-  const {title} = props;
+  const { title } = props;
   return (
     <div className={styles.container}>
-        <section className={styles.movies}>
-            <h2 className={styles.movies__title}>{title}</h2>
-            <div className={styles.movie__container}>
-              {movies.map((movie)=>{
-                return <Movie key={movie.id} movie={movie}/>
-              })}
-            </div>
-    
-        </section>
+      <section className={styles.movies}>
+        <h2 className={styles.movies__title}>{title}</h2>
+        <div className={styles.movie__container}>
+          {movies.map((movie) => {
+            return <Movie key={movie.id} movie={movie} />;
+          })}
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default Movies
+export default Movies;
